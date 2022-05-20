@@ -16,12 +16,15 @@
         <li routerLinkActive="active">
           <a routerLink="shopping-list">Shopping List</a>
         </li>
-        <li routerLinkActive="active">
+        <li *ngIf="!isAuth" routerLinkActive="active">
           <a routerLink="auth">Authenticate</a>
         </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li class="dropdown" appDropdown>
+        <li *ngIf="isAuth">
+          <a (click)="onLogout()">Log Out</a>
+        </li>
+        <li class="dropdown" appDropdown *ngIf="isAuth">
           <a class="dropdown-toggle" data-toggle="dropdown" role="button"
             >Manage <span class="caret"></span
           ></a>
